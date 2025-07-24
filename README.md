@@ -25,3 +25,7 @@ print('Hellow World!')
 
 ## Update
     `1.0.0` - Initial release with basic logging functionality.
+
+## License
+
+model_logger is MIT licensed. See the [LICENSE](LICENSE) for details.
