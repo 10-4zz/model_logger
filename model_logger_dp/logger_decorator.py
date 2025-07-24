@@ -2,7 +2,7 @@ import sys
 import traceback
 from typing import Optional, Union
 
-from constant import *
+from .constant import *
 
 
 def error(message: str) -> None:
