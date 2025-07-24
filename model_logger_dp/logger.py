@@ -50,7 +50,7 @@ class ModelLogger:
         if f:
             # Format the caller info
             filename = os.path.basename(f.f_code.co_filename)
-            return f"{filename}:{f.f_lineno} ({f.f_code.co_name})"
+            return f"Code file name: {filename} function name: {f.f_code.co_name} line: {f.f_lineno}"
         return "unknown:0"
 
     def write(self, message):
