@@ -17,7 +17,7 @@ os.environ['LOG_PATH'] = './output/log'  # Set the directory for logs
 
 # If you want to save the log with a specific file name, you should set the filename parameter.
 # If you do not set the filename parameter, the log will be saved with a datatime name.
-logger  = model_logger.Logger(filename='train.log')
+logger  = model_logger.ModelLogger(filename='train.log')
 
 # Use the print method to log the message.
 print('Hellow World!')
