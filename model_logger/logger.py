@@ -3,7 +3,7 @@ import sys
 from datetime import datetime
 
 
-class Logger:
+class ModelLogger:
     def __init__(self, filename=None):
         self.log_dir = os.environ.get("LOG_PATH", "./output/log")
         os.makedirs(self.log_dir, exist_ok=True)
@@ -50,8 +50,8 @@ class Logger:
 if __name__ == "__main__":
     os.environ["LOG_PATH"] = "./logs"
 
-    logger1 = Logger("custom.log")
+    logger1 = ModelLogger("custom.log")
     print("This is a log with a custom named file.")
 
-    logger2 = Logger()
+    logger2 = ModelLogger()
     print("This is a log with a time named file.")
