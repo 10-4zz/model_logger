@@ -7,7 +7,14 @@ A package that contains method to log the model training log.
 The package is an uncompleted package in the version 1.x. Its functions will be gradually improved in subsequent versions.
 
 ## How to use
+To use the model logger, you need to install the package first. You can install it using pip:
+
+```bash
+pip install model_logger_dp
+```
+
 To start the model logger.
+
 ```python
 import os
 import model_logger_dp
@@ -21,6 +28,7 @@ logger  = model_logger_dp.ModelLogger(filename='train.log')
 # Use the print method to log the message.
 print('Hellow World!')
 ```
+
 To look the help and update log of the package, you can use the `log_help` and `log_update` method.
 
 ```python
