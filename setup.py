@@ -14,7 +14,7 @@ DESCRIPTION = 'A logger to log the model training, etc.'
 LONG_DESCRIPTION = ''
 
 setup(
-    name="model_logger",
+    name="model_logger_dp",
     version=VERSION,
     author="Ian zhu",
     author_email="IanZhu@m.ldu.edu.cn",
