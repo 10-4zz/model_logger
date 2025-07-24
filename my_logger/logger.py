@@ -51,7 +51,7 @@ if __name__ == "__main__":
     os.environ["LOG_PATH"] = "./logs"
 
     logger1 = Logger("custom.log")
-    print("这是自定义文件名的日志")
+    print("This is a log with a custom named file.")
 
     logger2 = Logger()
-    print("这是自动按时间命名的日志")
+    print("This is a log with a time named file.")
