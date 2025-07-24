@@ -1,4 +1,4 @@
-from logger import ModelLogger
+from .logger import ModelLogger
 
 __all__ = {
     'ModelLogger'
