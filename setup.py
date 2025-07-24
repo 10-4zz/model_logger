@@ -9,7 +9,7 @@ with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
 # you need to change all these
-VERSION = '1.0'
+VERSION = '1.0.0'
 DESCRIPTION = 'A logger to log the model training, etc.'
 LONG_DESCRIPTION = ''
 
