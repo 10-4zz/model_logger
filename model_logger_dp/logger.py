@@ -5,9 +5,22 @@ from datetime import datetime
 
 class ModelLogger:
     def __init__(
-            self, filename: str = None,
+            self,
+            filename: str = None,
             use_time: bool = True
     ) -> None:
+        """Get parameters for training along with the learning rate.
+
+                Args:
+                    filename: The log file name. If None, a timestamped file will be created.
+                    use_time: If True, each log entry will be prefixed with a timestamp.
+                Returns:
+                     None
+
+                Note:
+                    filename default is None, which will create a log file with the current timestamp.
+                    use_time default is True, which will add a timestamp to each log entry.
+                """
         self.log_dir = os.environ.get("LOG_PATH", "./output/log")
         os.makedirs(self.log_dir, exist_ok=True)
         if filename is None:
