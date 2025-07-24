@@ -4,12 +4,17 @@ from datetime import datetime
 
 
 class ModelLogger:
-    def __init__(self, filename=None):
+    def __init__(
+            self, filename: str = None,
+            use_time: bool = True
+    ) -> None:
         self.log_dir = os.environ.get("LOG_PATH", "./output/log")
         os.makedirs(self.log_dir, exist_ok=True)
         if filename is None:
             timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
             filename = f"{timestamp}.log"
+
+        self.use_time = use_time
         self.log_file = os.path.join(self.log_dir, filename)
         self.terminal = sys.stdout
         sys.stdout = self
@@ -21,10 +26,14 @@ class ModelLogger:
         self.buffer += message
 
         if "\n" in message:
-            timestamp = self.get_timestamp()
+            if self.use_time:
+                timestamp = self.get_timestamp()
+                content = f"[{timestamp}] {self.buffer}"
+            else:
+                content = f"{self.buffer}"
             try:
                 with open(self.log_file, "a", encoding="utf-8") as f:
-                    f.write(f"[{timestamp}] {self.buffer}")
+                    f.write(content)
             except Exception as e:
                 self.terminal.write(f"Error writing to log file: {e}\n")
             self.buffer = ""
@@ -34,10 +43,14 @@ class ModelLogger:
         self.terminal.flush()
 
         if self.buffer:
-            timestamp = self.get_timestamp()
+            if self.use_time:
+                timestamp = self.get_timestamp()
+                content = f"[{timestamp}] {self.buffer}"
+            else:
+                content = f"{self.buffer}"
             try:
                 with open(self.log_file, "a", encoding="utf-8") as f:
-                    f.write(f"[{timestamp}] {self.buffer}")
+                    f.write(content)
             except Exception as e:
                 self.terminal.write(f"Error writing to log file: {e}\n")
             self.buffer = ""
