@@ -109,6 +109,7 @@ output and make it easier to read.
 """
 
 update_text = """
+`1.0.3` - Add model summery method and update the setup method.
 `1.0.2` - Add showing the caller method.
 `1.0.1` - Add the logger decorator, improve the logger instance and implement help and update log method.
 `1.0.0` - Initial release with basic logging functionality.
