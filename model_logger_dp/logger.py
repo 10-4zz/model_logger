@@ -1,8 +1,38 @@
 import os
 import sys
 import inspect
+from copy import deepcopy
 
 from datetime import datetime
+
+import torch
+import torch.nn as nn
+import thop
+
+
+def summery_model(model: nn.Module, imgsz: int = 224) -> None:
+    """
+        Args:
+            model: The model to be summarized.
+            imgsz: The image of input size.
+    """
+    n_parameters = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    param_content = "{:<18}={:>8.3f}M".format("Overall parameters", n_parameters / 1e6)
+    print(param_content)
+
+    p = next(model.parameters())
+    im = torch.empty((1, 3, imgsz, imgsz), device=p.device)  # input image in BCHW format
+    flops = thop.profile(deepcopy(model), inputs=(im, ), verbose=False)[0] / 1E9 * 2
+    flops_content = "{:<20}={:>8.1f}GFLOPs".format("Overall FLOPs (Thop)**", flops)  # 640x640 GFLOPs
+    print(flops_content)
+
+    save_dir = os.environ.get("LOG_PATH", "./output/log")
+    os.makedirs(save_dir, exist_ok=True)
+    with open(os.path.join(save_dir, "model_summery.log"), 'w') as f:
+        f.write(param_content + '\n')
+        f.write(flops_content + '\n')
+    f.close()
+
 
 
 class ModelLogger:
