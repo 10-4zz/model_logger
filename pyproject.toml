@@ -20,8 +20,8 @@ license = {text = "MIT"}
 dynamic = ["version"]
 
 [project.urls]
-homepage = "https://github.com/huggingface/pytorch-image-models"
-repository = "https://github.com/huggingface/pytorch-image-models"
+homepage = "https://github.com/10-4zz/model_logger_dp"
+repository = "https://github.com/10-4zz/model_logger_dp"
 
 [tool.pdm.version]
 source = "file"
